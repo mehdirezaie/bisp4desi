@@ -1,29 +1,35 @@
 \section{Introduction}
 \label{sec:introduction}
+With unparalleled amount of spectra, DESI is designed to deepen our understanding of the nature of Dark Energy, masses of neutrinos, and gravity by measuring the clustering of galaxies and quasars. With four distinct tracers, DESI is constructing a 3D map of the Universe covering the redshift range of $? < z < ?$. The power spectrum or two-point correlation functions have been the gold standard statistics to condense data and extract information from large-scale structure. Reconstruction techniques can improve the precision by accounting for the smearing effect of BAO, but the amount of information in the two-point statistics is limited by cosmic variance. Recent studies indicated that higher order statistics are capable of extracting more information.
 
-DESI is a great experiment. We need higher order statistics to extract more information. Reconstruction techniques can improve the precision, but the amount of information is limited by cosmic variance. Possible ways to improve is to go higher order statistics. 
-
-Cite Lado's paper that if bispectrum used as a standard ruler, a significant improvement is distance scale can be achieved. Much better than the standard reconstruction. Difficult to model the full bispectrum though. In this paper, we would like to do a standard ruler analysis of bispectrum BAO with different DESI-like tracers. 
-
-We find a factor of X improvement, and what happens at different redshifts. Worse for QSO probably, because of high shotnoise and less bispectrum clustering at higher redshifts. 
-
-
-Sec 2. Glam Section
-Plot Glam with and without BAO measurements.
-Describe Molino's covariance and put some justification. 1 Gpc cub.
-Reference Jayashree's paper that the template works well for a range of redshifts. make a plot for sigma alpha vs kmax, with and without nuisance parameters.
-Use CAMB to get the bao constraints for reconstructed power spectrum with GLAM parameters.
-Sec 3. BAO is DESI samples. Analyse Abacus mocks with template from Jayashree. Renormalize Molino's covariance by the ratio of spectra to get covariance for Abacus. Maybe use Glam and Molino to show that spectra ratio scales proportional to dispersion ratio.
-
-Sec 4. BAO detection level. How well we can fit BAO with a smooth function. Mean Glam' with and without BAO as model 1 and 2, and mean Glam with BAO as data. Chi2 vs alpha.
+Even for an initial Gaussian field, the \cite{samushia2021information} showed that higher order clustering statistics yield significantly better constraints on cosmological distance measurements relative to reconstruction techniques. 
 
 
 
 \begin{equation}
-\log \mathcal{L} = \Delta r^{\dagger} C^{-1} \Delta r,
+	C_{P, {\rm ABACUS}} = \frac{r_{\rm ABACUS}}{r_{\rm MOLINO}} C_{\rm MOLINO}
 \end{equation}
-where $\Delta r = r(\textbf{k}) - r(\alpha \textbf{k})$ with $r$ being defined as the ratio of
+where $r \equiv = \frac{var(P)}{P^{2}V}$
+
+%DESI is a great experiment. We need higher order statistics to extract more information. Reconstruction techniques can improve the precision, but the amount of information is limited by cosmic variance. Possible ways to improve is to go higher order statistics. 
+%
+%Cite Lado's paper that if bispectrum used as a standard ruler, a significant improvement is distance scale can be achieved. Much better than the standard reconstruction. Difficult to model the full bispectrum though. In this paper, we would like to do a standard ruler analysis of bispectrum BAO with different DESI-like tracers. 
+%
+%We find a factor of X improvement, and what happens at different redshifts. Worse for QSO probably, because of high shotnoise and less bispectrum clustering at higher redshifts. 
+%
+%
+%Sec 2. Glam Section
+%Plot Glam with and without BAO measurements.
+%Describe Molino's covariance and put some justification. 1 Gpc cub.
+%Reference Jayashree's paper that the template works well for a range of redshifts. make a plot for sigma alpha vs kmax, with and without nuisance parameters.
+%Use CAMB to get the bao constraints for reconstructed power spectrum with GLAM parameters.
+%Sec 3. BAO is DESI samples. Analyse Abacus mocks with template from Jayashree. Renormalize Molino's covariance by the ratio of spectra to get covariance for Abacus. Maybe use Glam and Molino to show that spectra ratio scales proportional to dispersion ratio.
+%
+%Sec 4. BAO detection level. How well we can fit BAO with a smooth function. Mean Glam' with and without BAO as model 1 and 2, and mean Glam with BAO as data. Chi2 vs alpha.
 
 
 
-
+%\begin{equation}
+%\log \mathcal{L} = \Delta r^{\dagger} C^{-1} \Delta r,
+%\end{equation}
+%where $\Delta r = r(\textbf{k}) - r(\alpha \textbf{k})$ with $r$ being defined as the ratio of
