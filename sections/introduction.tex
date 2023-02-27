@@ -4,12 +4,12 @@ With unparalleled amount of spectra, DESI is designed to deepen our understandin
 
 Even for an initial Gaussian field, the \cite{samushia2021information} showed that higher order clustering statistics yield significantly better constraints on cosmological distance measurements relative to reconstruction techniques. 
 
-
+We estimate the reduced covariance matrix from a suite of 15000 simulations (MOLINO) and scale it by the variance of power spectrum or bispectrum for the GLAM or ABACUS realizations.
 
 \begin{equation}
-	C_{P, {\rm ABACUS}} = \frac{r_{\rm ABACUS}}{r_{\rm MOLINO}} C_{\rm MOLINO}
+	\mathbb{C}_{Y,Y} = (\sigma_{Y} \otimes \sigma_{Y})_{\rm Mock} ~ (\frac{\mathbb{C}_{Y,Y}}{\sigma_{Y} \otimes \sigma_{Y}})_{\rm MOLINO}
 \end{equation}
-where $r \equiv = \frac{var(P)}{P^{2}V}$
+where $\mathbb{C}$
 
 %DESI is a great experiment. We need higher order statistics to extract more information. Reconstruction techniques can improve the precision, but the amount of information is limited by cosmic variance. Possible ways to improve is to go higher order statistics. 
 %
