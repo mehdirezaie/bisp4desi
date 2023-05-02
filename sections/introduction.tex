@@ -1,42 +1,11 @@
 \section{Introduction}
 \label{sec:introduction}
-With unparalleled amount of spectra, DESI is designed to deepen our understanding of Dark Energy, gravity, and masses of neutrinos by measuring the clustering of galaxies and quasars \mr{REF}. With four distinct tracers, DESI is constructing a 3D map of the Universe covering the redshift range of $? < z < ?$. The power spectrum or two-point correlation functions have been the gold standard statistics to reduce data dimensionality and extract information from large-scale structure. The primary features in the clustering of galaxies and quasars are Baryon Acoustic Oscillations (BAO) and Redshift-Space Distortions (RSD). Peculiar velocity dispersions of galaxies induce systematic effects which , but reconstruction techniques can account for the smearing effect of BAO and improve the precision. The amount of information in the two-point statistics is limited by cosmic variance. Recent studies indicated that higher order statistics are capable of extracting more information.
+As a stage IV galaxy redshift survey, the Dark Energy Spectroscopic Instrument (DESI) utilizes $5000$ robotically-driven fibers to simultaneously collect spectra of thousands of galaxies and quasars \citep{aghamousa2016desi}. Over its five year mission, DESI will yield an unparalleled volume of spectra to construct the biggest 3D volume of the Universe, which can be leveraged to deepen our understanding the formation and evolution of structures in the Universe, and most importantly, to shed light on the nature of dark energy \citep{2016arXiv161100036D}.
 
-Even for an initial Gaussian field, the \cite{samushia2021information} showed that higher order clustering statistics yield significantly better constraints on cosmological distance measurements relative to reconstruction techniques. 
+Common clustering statistics for extracting information from data of galaxy redshift surveys, like DESI, are the power spectrum and two-point correlation function, which characterize the excess probability of finding two galaxies separated by a given wavenumber and distance, respectively, relative to a random distribution of galaxies. One of the primary features imprinted in the large-scale clustering of galaxies are Baryon Acoustic Oscillations (BAO), which are created by sound waves propagating through the early Universe before the epoch of recombination, i.e., when photons no longer were able to re-ionize atoms. These acoustic waves leave a characteristic scale in the distribution of galaxies that can be used as a standard ruler to measure distances in the Universe \citep[see, e.g.,][]{1996ApJ...471..542H, 1998ApJ...496..605E, 2003ApJ...598..720S}.
+ 
+In galaxy redshift surveys, the position of galaxies is measured via their redshifts, which is not a direct measurement of their true distances, but rather influenced by their peculiar velocities, i.e., the velocities of the galaxies relative to their local environment. These peculiar velocities can smear out the BAO feature by causing the distribution of galaxies to appear elongated along the line-of-sight direction. Additionally, non-linearities caused by subsequent structure formation impact the sharpness of the BAO signal, and effectively reduce the statistical precision of the distance scale measurements. Several reconstruction techniques have been developed to account for the smearing effect of BAO and recover the constraining power lost due to bulk flows and space distortions \citep[see, e.g.,][]{Eisenstein_2007}. However, even with reconstruction techniques applied, cosmic variance imposes a limitation on the amount of information that can be extracted from the two-point statistics of large-scale structure. Cosmic variance can be reduced by increasing the size of the survey volume via either surveying a larger area of the sky or by going deeper in redshift. 
 
-We estimate the reduced covariance matrix from a suite of 15000 simulations (MOLINO) and scale it by the variance of power spectrum or bispectrum for the GLAM or ABACUS realizations.
+Alternatively, measuring the correlation between triplets or quadruplets of galaxies higher order statistics can extract more information from large-scale structure that are not captured by two-point statistics. For instance, \cite{samushia2021information} showed that higher-order clustering statistics can provide significantly better constraints on cosmological distance measurements compared to reconstruction techniques, even for an initial Gaussian field. Recent developments in algorithms utilizing rotational symmetries and advancements in computing power have made higher-order statistics more feasible to measure \citep[see, e.g.,][]{Szapudi_2004,2015MNRAS.454.4142S,2016MNRAS.455L..31S, 2017MNRAS.468.1070S, 2017MNRAS.469.2059S, 2018MNRAS.478.1468S, 2022PNAS..11911366P}. Higher order clustering measurements have been used to improve parameter constraints or break parameter degeneracies on modified theories of gravity \citep{2023arXiv230206808S}, galaxy-halo connections \citep{2022MNRAS.515.6133Z}, cosmic distance scales \citep{2017MNRAS.469.1738S, 2018MNRAS.478.4500P}, and baryon-dark matter relative velocity \citep{2018MNRAS.474.2109S}.
 
-\begin{equation}
-	\mathbb{C}_{Y,Y} = (\sigma_{Y} \otimes \sigma_{Y})_{\rm Mock} ~ (\frac{\mathbb{C}_{Y,Y}}{\sigma_{Y} \otimes \sigma_{Y}})_{\rm MOLINO}
-\end{equation}
-where $\mathbb{C}$
-
-
-
-\begin{enumerate}
-\item sigma (alpha) vs kmax for P(k), B(k), and joint
-\item min \chi^{2} vs alpha for P(k), B(k), and joint
-\end{enumerate}
-
-%DESI is a great experiment. We need higher order statistics to extract more information. Reconstruction techniques can improve the precision, but the amount of information is limited by cosmic variance. Possible ways to improve is to go higher order statistics. 
-%
-%Cite Lado's paper that if bispectrum used as a standard ruler, a significant improvement is distance scale can be achieved. Much better than the standard reconstruction. Difficult to model the full bispectrum though. In this paper, we would like to do a standard ruler analysis of bispectrum BAO with different DESI-like tracers. 
-%
-%We find a factor of X improvement, and what happens at different redshifts. Worse for QSO probably, because of high shotnoise and less bispectrum clustering at higher redshifts. 
-%
-%
-%Sec 2. Glam Section
-%Plot Glam with and without BAO measurements.
-%Describe Molino's covariance and put some justification. 1 Gpc cub.
-%Reference Jayashree's paper that the template works well for a range of redshifts. make a plot for sigma alpha vs kmax, with and without nuisance parameters.
-%Use CAMB to get the bao constraints for reconstructed power spectrum with GLAM parameters.
-%Sec 3. BAO is DESI samples. Analyse Abacus mocks with template from Jayashree. Renormalize Molino's covariance by the ratio of spectra to get covariance for Abacus. Maybe use Glam and Molino to show that spectra ratio scales proportional to dispersion ratio.
-%
-%Sec 4. BAO detection level. How well we can fit BAO with a smooth function. Mean Glam' with and without BAO as model 1 and 2, and mean Glam with BAO as data. Chi2 vs alpha.
-
-
-
-%\begin{equation}
-%\log \mathcal{L} = \Delta r^{\dagger} C^{-1} \Delta r,
-%\end{equation}
-%where $\Delta r = r(\textbf{k}) - r(\alpha \textbf{k})$ with $r$ being defined as the ratio of
+In this paper, we utilize simulations of galaxies with similar clustering properties as the DESI targets to characterize the constraining power on cosmic distance scales from bispectrum. The outline of this paper is as follows. We discuss the templates for BAO power spectrum and bispectrum in Section \ref{sec:templates}, and the details of simulations in Section \ref{sec:data}. Finally, we present the constraints in \ref{sec:results}, and conclude with discussion and conclusion in \ref{sec:conclusion}.

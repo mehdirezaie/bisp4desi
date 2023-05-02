@@ -1,0 +1,27 @@
+\section{Templates}\label{sec:templates}
+The templates for power spectrum and bispectrum are validated in \cite{behera2013}, and we briefly summarize the methods. These templates are used to qualitatively assess the location and magnitude of baryonic oscillations in power spectrum and bispectrum.
+
+\subsection{Power spectrum}
+The fitting function or template for the power spectrum is given in \citep{1998ApJ...496..605E}, which assumes a general cold dark matter-baryon cosmology and corrects for the suppression of clustering on small scales, e.g., below the sound horizon. The power spectrum can be described as the multiplication of the primordial power spectrum and the square of the transfer function, which for a zero baryon cosmology is given by,
+\begin{equation}
+    T_{0} = \frac{\ln(2e+1.8q)}{\ln(2e+1.8q) + C_{0} q^{2}}
+\end{equation}
+where,
+\begin{align}
+    C_{0} &= 14.2 + \frac{731}{1 + 62.5q}\\
+    q &= (\frac{k}{h{\rm Mpc}^{-1}})\frac{\Theta^{2}_{\rm CMB}}{\Omega_{0}h}
+\end{align}
+where $\Theta$ is the temperature of the cosmic microwave background and $\Omega_{0}$ is the total matter density. The damping on large scales due to baryons is described by,
+\begin{equation}
+    \Gamma(k) = \Omega_{0}h[\alpha_{\Gamma} + \frac{1-\alpha_{\Gamma}}{1 + (0.43ks)^{4}}] 
+\end{equation}
+where
+\begin{align}
+    \alpha_{\Gamma} &=1-0.328\ln(431\Omega_{0}h^{2})\frac{\Omega_{b}}{\Omega_{0}}\nonumber\\
+    &+ 0.38\ln(22.3\Omega_{0}h^{2}) (\frac{\Omega_{b}}{\Omega_{0}})^{2}
+\end{align}
+where $\Omega_{b}$ represents the baryon density today. 
+
+
+\subsection{Bispectrum}
+Scoccimarro, Couchman, and Frieman (1998): bispectrum template with plane-parallel approx and damping factor (for nonlinear effects due to velocity dispersion).
