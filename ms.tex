@@ -4,6 +4,9 @@
 
 \documentclass[fleqn, usenatbib]{mnras}
 \usepackage{style}                                          % the settings are all here 
+\newcommand{\Ng}{N_\mathrm{g}}
+\newcommand{\Bsmooth}{B_\mathrm{smooth}}
+\newcommand{\Bbao}{B_\mathrm{BAO}}
 
 \title[Constraining BAO with DESI]{Constraining BAO parameter with Bispectrum clustering of DESI Tracers}
 \input{sections/authorlist}
@@ -26,9 +29,10 @@ Awesome keywords: Perfect
 
 %%%%%%%%%%%%%%%%% BODY OF PAPER 
 \input{sections/introduction}
-\input{sections/templates}
-\input{sections/data}
-\input{sections/results}
+\input{sections/simulations}
+\input{sections/measurements}
+\input{sections/covariances}
+\input{sections/fits}
 \input{sections/conclusion}
 %\input{sections/acknowledgement}
 %\input{sections/dataavailability}
@@ -37,7 +41,7 @@ Awesome keywords: Perfect
 \bibliographystyle{mnras}
 \bibliography{refs} 
 \appendix
-\input{sections/extra}
+\input{sections/templates}
 
 
 % % % Don't change these lines

@@ -1,0 +1,20 @@
+\section{DESI Measurements}\label{sec:measurements}
+
+We measure bispectrum using standard techniques described in \cite{}. We start by dividing the cubic volume of simulations into $\Ng \times \Ng\times\Ng$ sized three-dimensional grid, where $\Ng = 1024$.
+
+\textcolor{red}{LS: I will put a description of the entire algorithm here later. Also here we should describe the triangular index and the kinds of reductions that we do.}
+
+We separate the bispectrum into smooth and BAOonly parts similar to how it's done for the power spectrum. We find functions $\Bsmooth$, and $\Bbao$ such that
+\begin{equation}
+    B = \Bsmooth\Bbao.
+\end{equation}
+$\Bsmooth$ models the bispectrum with the BAO signature removed. Even though its meaning is clear, it can not be rigorously defined from the first principles, which makes the separation into the smooth and BAO components part of the modeling. For a useful extracting we want the $\Bbao$ component to be oscillating around 1 and decay at higher wavenumbers. By constraining ourselves to the BAO-only analysis we are hoping that while our models for the $\Bsmooth$ may fail, the same models for the $\Bbao$ component will remain accurate.
+
+
+Points on figure~\ref{fig:abacus_bispectra} show the bispectrum of \textit{FirstGen} mocks as a function of the triangular index. The error bars are estimated from the variance of the 25 \textit{FirstGen} mocks for each tracer. The lines are the best-fit models from the leading order perturbation theory model, where the cosmological parameters have been fixed to the true values of the mocks and bias parameters were allowed to freely vary.  
+
+Figure~\ref{fig:abacus_bao} shows the same measurements but divided by the smooth part of the bispectrum. \textcolor{red}{We will describe here what we see. Does the extraction always work well? high k problems?}. Figres~\ref{fig:abacus_bao_reduced} show the reduced measurements for the $\Bbao$.
+
+Figure~\ref{fig:abacus_ps} shows the BAO-only power spectrum from the same simulations. 
+
+Figure~\ref{fig:correlation} shows the bin-by-bin correlation of the bispectrum and power spectrum measurements.
