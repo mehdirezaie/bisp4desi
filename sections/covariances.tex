@@ -1,6 +1,23 @@
 \section{Covariances}
 \label{sec:covariances}
 
-\textcolor{red}{Justification of what we do}
+We fit the BAO-only bispectra in \texttt{AbacusSummit} by minimizing the weighted squared difference between the measurements and the model. 
+\begin{equation}
+\label{eq:weightedsum}
+    \chi^2 = \Delta B^T P \Delta B
+\end{equation}
+If we knew the actual covariance matrix of our measurements, $C$, we would use its inverse $P=C^{-1}$ as the weighting matrix in Eq.~\eqref{eq:weightedsum}. This weighting is the most optimal in the sense that it results in the smallest spread around the actual value of parameters. Any other weighting is less optimal, but the recovered parameter values are still unbiased. 
 
-\textcolor{red}{Molino rescaled by Abacus. Gaussian covariance.}
+We will use the following weightings in our fits:
+\begin{itemize}
+\item Abacus rescaled by Molino
+\item diagonal Abacus
+\item Gaussian theory
+\item non-Gaussian theory (ask Oliver)
+\end{itemize}
+
+Knowing the true covariance matrix has an advantage in that when used the density of points in the MCMC chains can be interpreted as a true posterior likelihood of the parameters. For other choices, the posterior density of the MCMC chains will wither overestimate or underestimate the true likelihood.
+
+This is not a significant problem for us since we are only interested in a single parameter $\alpha$. We will estimate its measurement error from the spread of the measurements from 25 \texttt{AbacusSummit} boxes.
+
+\textcolor{red}{This is an important section and we will rewrite it to be more convincing later. For now let this be a placeholder.}
