@@ -1,23 +1,42 @@
 \section{Covariances}
 \label{sec:covariances}
 
-We fit the BAO-only bispectra in \texttt{AbacusSummit} by minimizing the weighted squared difference between the measurements and the model. 
+We fit the BAO-only bispectra in \texttt{AbacusSummit} by minimizing the weighted squared difference between the measurements and the model, 
 \begin{equation}
 \label{eq:weightedsum}
-    \chi^2 = \Delta B^T P \Delta B
+    \chi^2(\alpha, \nu) = \Delta  \mathbf{B}^\mathrm{T} \mathbfss{W}\Delta \mathbf{B},
 \end{equation}
-If we knew the actual covariance matrix of our measurements, $C$, we would use its inverse $P=C^{-1}$ as the weighting matrix in Eq.~\eqref{eq:weightedsum}. This weighting is the most optimal in the sense that it results in the smallest spread around the actual value of parameters. Any other weighting is less optimal, but the recovered parameter values are still unbiased. 
+where 
+\begin{equation}
+    \Delta  \mathbf{B}(\alpha, \nu) = \mathbf{B}^\mathrm{m} - \mathbf{B}^\mathrm{t}(\alpha, \nu),
+\end{equation}
+is the difference between measured and theoretical bispectra and $\mathbfss{W}$ is a positive definite weighting matrix that upweights the contribution of some linear combinations of $\Delta  \mathbf{B}$ to the $\chi^2$ compared to the others. The theoretical bispectrum depends on the BAO scale parameter $\alpha$ as well as nuisance parameters $\nu$. We expect the $\chi^2$ to achieve its minimum value at the true parameter $\alpha^\star$ as long as our model is unbiased and the average value of $\Delta  \mathbf{B}$ over many realizations is zero. The actual minimizer values $\widehat{\alpha}$ from individual realizations will be spread around the true value $\alpha^\star$ with some standard deviation $\sigma_\alpha^\star$. We will estimate $\sigma_\alpha^\star$ from the standard deviation of $\widehat{\alpha}$ values - $\widehat{\sigma}_\alpha$ - that we get from 25 \texttt{AbacusSummit} mocks. The fractional variance in our estimate of the error is expected to be
+\begin{equation}
+\label{eq:samplevariance}
+    \frac{\mathrm{Std}(\widehat{\sigma}_\alpha)}{\sigma_\alpha^\star} = \sqrt{\frac{2}{N_\mathrm{sample}-1}}.
+\end{equation}
+$N_\mathrm{sample} = 25$ in our case which results in a 28 percent uncertainty. The \texttt{AbacusSummit} boxes cover 8 cubic Gigaparsecs of volume which is significantly larger than the BAO scale. We expect the errors on the $\widehat\alpha$ to scale as $V^{-1}$ for larger volumes. 
 
-We will use the following weightings in our fits:
+The main purpose behind the weighting matrix $\mathbfss{W}$ is to minimize $\sigma_\alpha^\star$ by upweighting bispectrum combinations that are measured more precisely compared to the noisy ones. The optimal weighting is achieved when 
+\begin{equation}
+    \label{eq:weightoptimal}
+    \mathbfss{W} = \mathbfss{C}^{-1},
+\end{equation}
+ where $\mathbfss{C}^{-1}$ is the true inverse covariance of the bispectrum measurements. Another convenient property of the weights following Eq.~\eqref{eq:weightoptimal} is that when they are used the distribution of the $\alpha$ values in the Markov Chain Monte Carlo (MCMC) follows their true likelihood. This means that we can use the MCMC posterior distribution to estimate the error on our measurement of $\alpha$ which is more accurate than estimating it from a sample variance of a retrieved parameter from a small number of mocks, in which case the knowledge of the error on the measurement is limited by Eq.~\eqref{eq:samplevariance} \citep[see, e.g.,][for a comparison of two ways of estimating errors when combining BAO measurements.]{2022JCAP...05..040G}
+
+Unfortunately, at this point in time, we do not have a large suite of high-fidelity simulations for estimating accurate inverse covariance of our bispectrum measurements. Instead, we try a few different options for the weighting matrix based on the theoretical expectation of how the bispectrum variance is expected to scale for Gaussian fields \citep{2017MNRAS.467..928G, 2019MNRAS.490.5931P, 2022PhRvD.106d3515H}. 
+
+We try out three weighting schemes in our analysis
 \begin{itemize}
-\item Abacus rescaled by Molino
-\item diagonal Abacus
-\item Gaussian theory
-\item non-Gaussian theory (ask Oliver)
+\item Diagonal errors from \texttt{AbacusSummit} simulations
+\item Correlated (non-diagonal) weighting from \texttt{Molino} simulations
+\item And a theoretically computed weighting based on a simple Gaussian model with shot-noise
 \end{itemize}
 
-Knowing the true covariance matrix has an advantage in that when used the density of points in the MCMC chains can be interpreted as a true posterior likelihood of the parameters. For other choices, the posterior density of the MCMC chains will wither overestimate or underestimate the true likelihood.
+The diagonal errors are computed by simply looking at the variance of each bispectrum mode and ignoring cross-correlations. The resulting $\mathbfss{W}$ is diagonal which makes it numerically inexpensive to implement in our codes. Since this weighting scheme ignores cross-correlations between the modes and is based on a very small number of simulations, we don't expect it to be very optimal. We do expect it to provide us with a rough scaling between low and high wavenumber modes of the bispectrum. The fact that this weighting is derived from a significantly smaller number of mocks than the bispectrum modes that we use in our analysis is not a big problem for us since we are using Eq.~\eqref{eq:samplevariance} to estimate our errors. Even though we use MCMC to find $\widehat{\alpha}$ values, we do not try to interpret the width of the MCMC posterior as our posterior likelihood   and the usual problems associated with numerical inverse covariance matrices and Hartlap factors \citep{2007A&A...464..399H, 2013MNRAS.432.1928T, 2013PhRvD..88f3537D, 2014MNRAS.439.2531P} do not apply to our analysis. 
 
-This is not a significant problem for us since we are only interested in a single parameter $\alpha$. We will estimate its measurement error from the spread of the measurements from 25 \texttt{AbacusSummit} boxes.
+To get a sense of how the correlations between different bispectrum modes may affect the weighting we compute a reduced covariance matrix from 15,000 \texttt{Molino} simulations. The high number of simulations makes the coefficients of the reduced covariance matrix highly accurate. These cross-correlation coefficients give us some idea of how much the bispectrum modes measured from massive galaxies at lower redshifts can be correlated. We rescale this reduced covariance matrix by the standard diagonal errors described in the previous paragraph to get a weighting that accounts for the relative noise it different wavenumbers and the covariance between different wavenumbers at the same time. 
 
-\textcolor{red}{This is an important section and we will rewrite it to be more convincing later. For now let this be a placeholder.}
+Finally, we estimate the inverse covariance matrix of bispectrum measurements theoretically based on the expectation from purely Gaussian fields and accounting for Poisson shot noise and use it as our weight. This estimate is going to be off at higher wavenumbers where the non-Gaussian effects will diverge from our computations, but we still expect this weighting to be close to optimal and get the correct relative weighting between small wavenumbers that are dominated by cosmic variance and large wavenumbers that are dominated by shot noise. 
+
+\textcolor{red}{LS: once we have all results we will write a sentence here summarizing our findings. Which weightings resulted in a tighter distribution of $\tilde{\alpha}$.}
