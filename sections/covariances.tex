@@ -8,7 +8,7 @@ We fit the BAO-only bispectra in \texttt{AbacusSummit} by minimizing the weighte
 \end{equation}
 where 
 \begin{equation}
-    \Delta  \mathbf{B}(\alpha, \nu) = \mathbf{B}^\mathrm{m} - \mathbf{B}^\mathrm{t}(\alpha, \nu),
+    \Delta  \mathbf{B}(\alpha, \nu) = \mathbf{B}_\mathrm{m} - \mathbf{B}_\mathrm{t}(\alpha, \nu),
 \end{equation}
 is the difference between measured and theoretical bispectra and $\mathbfss{W}$ is a positive definite weighting matrix that upweights the contribution of some linear combinations of $\Delta  \mathbf{B}$ to the $\chi^2$ compared to the others. The theoretical bispectrum depends on the BAO scale parameter $\alpha$ as well as nuisance parameters $\nu$. We expect the $\chi^2$ to achieve its minimum value at the true parameter $\alpha^\star$ as long as our model is unbiased and the average value of $\Delta  \mathbf{B}$ over many realizations is zero. The actual minimizer values $\widehat{\alpha}$ from individual realizations will be spread around the true value $\alpha^\star$ with some standard deviation $\sigma_\alpha^\star$. We will estimate $\sigma_\alpha^\star$ from the standard deviation of $\widehat{\alpha}$ values - $\widehat{\sigma}_\alpha$ - that we get from 25 \texttt{AbacusSummit} mocks. The fractional variance in our estimate of the error is expected to be
 \begin{equation}
