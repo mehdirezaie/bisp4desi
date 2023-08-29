@@ -1,13 +1,13 @@
 \section{Modeling the BAO}
-To simplify our analysis, we assume isotropic diluation of the BAO scale. For the power spectrum,
+We simplify our analysis by assuming isotropic dilation of the BAO scale. For the power spectrum,
 \begin{equation}
     P_\mathrm{t}(k|\alpha,\nu) = \nu_{0} P_\mathrm{r}(\alpha k) + \nu_{1} + \nu_{2}k + \nu_{3}/k + \nu_{4}k^{2} + \nu_{5}/k^{2},
 \end{equation}
-where $P_\mathrm{r}$ is the ratio of the power spectrum to the BAO-less power spectrum. For the bispectrum, we have two extra degrees of freedom, namely $k$ vs $k_{1}, k_{2}, k_{3}$. We have,
+where $P_\mathrm{r}$ is the BAO component of the power spectrum. We use the mean of the mock power spectrum and \mr{linear perturbation theory} to estimate it \citep{behera2013}.  For the bispectrum, we have two extra degrees of freedom, namely $k$ vs $k_{1}, k_{2}, k_{3}$. We include cyclic terms to make sure that our model is symmetric under any permutation of wave numbers. We have,
 \begin{align}
-    \mathbf{B}_\mathrm{t}(k_{1}, k_{2}, k_{3}|\alpha \nu) &= \nu_{0}B(\alpha k_{1}, \alpha k_{2}, \alpha k_{3}) + \nu_{1} + \nu_{2}(k_{1}+k_{2}+k_{3})\nonumber\\
+    \mathbf{B}_\mathrm{t}(k_{1}, k_{2}, k_{3}|\alpha \nu) &= \nu_{0}B_{r}(\alpha k_{1}, \alpha k_{2}, \alpha k_{3}) + \nu_{1} + \nu_{2}(k_{1}+k_{2}+k_{3})\nonumber\\
     &+ \nu_{3}(1/k_{1}+1/k_{2}+1/k_{3})\nonumber\\
     &+\nu_{4}(k_{1}k_{2}+ \text{cycl})+\nu_{5}[1/(k_{1}k_{2})+ \text{cycl}]\nonumber\\
-    &+\nu_{6}(k_{1}k_{2}/k_{3}+\text{cycl})+\nu_{7}(k_{3}/(k_{2}k_{1})+\text{cycl})
+    &+\nu_{6}(k_{1}k_{2}/k_{3}+\text{cycl})+\nu_{7}(k_{3}/(k_{2}k_{1})+\text{cycl}),
 \end{align}
-We marginalize over the nuisance parameters using MCMC package called emcee and flat priors are imposed on all parameters including $\alpha$.
+where $B_{r}$ is the BAO component of the bispectrum. We marginalize over the nuisance parameters using Monte Carlo Markov Chain emcee package, and impose flat priors on all parameters including $\alpha$.
